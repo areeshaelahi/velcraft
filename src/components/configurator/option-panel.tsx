@@ -67,7 +67,7 @@ export function OptionPanel() {
     switch (currentStep) {
       case 0: // Design
         return (
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-6">
             {OPTIONS_DATA.design.map((opt) => (
               <button
                 key={opt.id}
@@ -81,8 +81,8 @@ export function OptionPanel() {
                 <div className="flex-1 bg-neutral-100 dark:bg-neutral-800 w-full relative">
                   <img src={opt.image} alt={opt.name} className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-multiply dark:mix-blend-screen" />
                 </div>
-                <div className="p-3 text-left w-full border-t border-[var(--border)]">
-                  <p className="text-xs font-medium">{opt.name}</p>
+                <div className="p-4 text-left w-full border-t border-[var(--border)]">
+                  <p className="text-sm font-medium">{opt.name}</p>
                   {opt.price !== 0 && (
                     <p className="text-[10px] text-[var(--foreground-secondary)] mt-0.5">
                       {opt.price > 0 ? "+" : ""}{formatPrice(opt.price)}
@@ -96,7 +96,7 @@ export function OptionPanel() {
 
       case 1: // Color
         return (
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-3 gap-6">
             {OPTIONS_DATA.color.map((opt) => (
               <button
                 key={opt.id}
@@ -127,12 +127,12 @@ export function OptionPanel() {
         const dataKey = ["design", "color", "material", "sole", "buckle", "accessories", "engraving", "size"][currentStep];
         
         return (
-          <div className="space-y-3">
+          <div className="space-y-4">
             {OPTIONS_DATA[dataKey].map((opt) => (
               <button
                 key={opt.id}
                 onClick={() => updateSelection(stepKey, opt.id)}
-                className={`w-full flex items-center justify-between p-4 border rounded-sm transition-all ${
+                className={`w-full flex items-center justify-between p-5 border rounded-sm transition-all ${
                   selections[stepKey] === opt.id 
                     ? "border-[var(--color-velcraft-gold)] bg-[var(--color-velcraft-gold)]/5" 
                     : "border-[var(--border)] hover:border-[var(--foreground)]"
@@ -154,7 +154,7 @@ export function OptionPanel() {
 
       case 5: // Accessories (Multi-select)
         return (
-          <div className="space-y-3">
+          <div className="space-y-4">
             {OPTIONS_DATA.accessories.map((opt) => {
               const isSelected = selections.accessories.includes(opt.id);
               return (
@@ -166,7 +166,7 @@ export function OptionPanel() {
                       : [...selections.accessories, opt.id];
                     updateSelection("accessories", newAcc);
                   }}
-                  className={`w-full flex items-center justify-between p-4 border rounded-sm transition-all ${
+                  className={`w-full flex items-center justify-between p-5 border rounded-sm transition-all ${
                     isSelected 
                       ? "border-[var(--color-velcraft-gold)] bg-[var(--color-velcraft-gold)]/5" 
                       : "border-[var(--border)] hover:border-[var(--foreground)]"
@@ -190,12 +190,12 @@ export function OptionPanel() {
 
       case 7: // Size
         return (
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-5">
             {OPTIONS_DATA.size.map((opt) => (
               <button
                 key={opt.id}
                 onClick={() => updateSelection("size", opt.id)}
-                className={`py-4 border rounded-sm transition-all ${
+                className={`py-5 border rounded-sm transition-all text-sm ${
                   selections.size === opt.id 
                     ? "border-[var(--color-velcraft-gold)] bg-[var(--color-velcraft-gold)] text-[var(--color-velcraft-black)] font-medium" 
                     : "border-[var(--border)] hover:border-[var(--foreground)]"

@@ -35,18 +35,18 @@ export function Footer() {
         <div className="container-luxury py-16 md:py-20 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="text-center md:text-left">
             <h3
-              className="text-2xl md:text-3xl mb-2"
+              className="text-2xl md:text-3xl mb-6"
               style={{ fontFamily: "var(--font-heading)" }}
             >
               Join the Velcraft Circle
             </h3>
-            <p className="text-sm text-[var(--color-velcraft-silver)]">
+            <p className="text-sm text-[var(--color-velcraft-silver)] max-w-md mx-auto md:mx-0">
               Be the first to know about new collections, exclusive offers, and
               artisan stories.
             </p>
           </div>
           <form
-            className="flex w-full md:w-auto gap-0"
+            className="flex w-full md:w-auto gap-2"
             onSubmit={(e) => e.preventDefault()}
           >
             <input
@@ -103,10 +103,10 @@ export function Footer() {
           {/* Links */}
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
-              <h4 className="text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-velcraft-gold)] mb-5">
+              <h4 className="text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-velcraft-gold)] mb-6">
                 {title}
               </h4>
-              <ul className="space-y-3">
+              <ul className="space-y-4">
                 {links.map((link) => (
                   <li key={link.href}>
                     <Link
@@ -123,10 +123,10 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-velcraft-gold)] mb-5">
+            <h4 className="text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-velcraft-gold)] mb-6">
               Contact
             </h4>
-            <ul className="space-y-4">
+            <ul className="space-y-5">
               <li className="flex items-start gap-2.5 text-sm text-[var(--color-velcraft-silver)]">
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
                 {BRAND.address}

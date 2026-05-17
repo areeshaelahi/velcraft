@@ -8,7 +8,7 @@ import { FadeIn, StaggerContainer, StaggerItem } from "@/components/shared/anima
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
+    <section className="relative min-h-[90vh] flex items-center py-12 lg:py-0 overflow-hidden">
       {/* Background with abstract luxury gradient/texture */}
       <div className="absolute inset-0 z-0 bg-[var(--background)]">
         <div className="absolute inset-0 opacity-30 dark:opacity-20 mix-blend-overlay">

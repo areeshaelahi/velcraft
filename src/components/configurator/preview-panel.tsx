@@ -16,27 +16,31 @@ export function PreviewPanel() {
   const getShoeImage = () => {
     switch (selections.design) {
       case "oxford": return "/images/shoe-1.jpg";
-      case "derby": return "/images/shoe-6.jpg";
-      case "monk": return "/images/shoe-2.jpg";
-      case "loafer": return "/images/shoe-4.jpg";
-      default: return "/images/hero-shoe.png";
+      case "derby": return "/images/shoe-1.jpg"; // Using shoe-1 as base for all to maintain consistent color mapping
+      case "monk": return "/images/shoe-3.jpg";
+      case "loafer": return "/images/shoe-2.jpg";
+      default: return "/images/shoe-1.jpg";
     }
   };
 
-  // Very basic color tint simulation for demo purposes
+  // Precise color tinting using hue-rotate, assuming base shoe is brown
   const getFilterStyles = () => {
     let filter = "";
     
-    // Simulate color changes with CSS filters
-    if (selections.color === "black") filter = "grayscale(100%) contrast(1.2)";
-    if (selections.color === "navy") filter = "hue-rotate(180deg) saturate(1.5) brightness(0.8)";
-    if (selections.color === "burgundy") filter = "hue-rotate(320deg) saturate(2) brightness(0.9)";
-    if (selections.color === "green") filter = "hue-rotate(100deg) saturate(1.2) brightness(0.7)";
+    switch (selections.color) {
+      case "black": filter = "grayscale(100%) contrast(1.2) brightness(0.6)"; break;
+      case "brown": filter = "hue-rotate(0deg) saturate(1.1)"; break;
+      case "burgundy": filter = "hue-rotate(320deg) saturate(1.8) brightness(0.8)"; break;
+      case "tan": filter = "hue-rotate(15deg) saturate(1.4) brightness(1.2)"; break;
+      case "navy": filter = "hue-rotate(200deg) saturate(1.5) brightness(0.7)"; break;
+      case "green": filter = "hue-rotate(100deg) saturate(1.2) brightness(0.7)"; break;
+    }
     
-    // Material
-    if (selections.material === "patent") filter += " contrast(1.5) brightness(1.2)";
+    // Material adjustments
+    if (selections.material === "patent") filter += " contrast(1.4) brightness(1.1) saturate(1.2)";
+    if (selections.material === "suede") filter += " contrast(0.9) brightness(1.1) sepia(0.2)";
     
-    return { filter };
+    return { filter, transition: "filter 0.5s ease-in-out" };
   };
 
   // Determine which part to "focus" or zoom on based on step
@@ -65,9 +69,17 @@ export function PreviewPanel() {
             src={getShoeImage()}
             alt="Shoe Preview"
             fill
-            className="object-contain drop-shadow-2xl mix-blend-multiply dark:mix-blend-normal"
+            className="object-contain mix-blend-multiply dark:mix-blend-normal drop-shadow-2xl"
             priority
           />
+          
+          {/* Material Texture Overlay Simulator */}
+          {selections.material === "suede" && (
+            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-30 mix-blend-overlay" />
+          )}
+          {selections.material === "grain" && (
+            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/leather.png')] opacity-40 mix-blend-overlay" />
+          )}
         </motion.div>
       </AnimatePresence>
 
