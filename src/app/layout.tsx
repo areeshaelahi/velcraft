@@ -38,6 +38,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${inter.variable} ${playfair.variable} ${cormorant.variable} min-h-screen flex flex-col font-sans antialiased`}
+        suppressHydrationWarning
       >
         <ThemeProvider>
           <Navbar />
